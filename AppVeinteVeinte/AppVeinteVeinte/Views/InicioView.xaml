@@ -1,0 +1,29 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:vm="clr-namespace:Proyecto.ViewModel"
+             x:Class="Ejemplo.Views.InicioView"
+             NavigationPage.HasNavigationBar="False"
+             xmlns:imgs="clr-namespace:ImageCircle.Forms.Plugin.Abstractions;assembly=ImageCircle.Forms.Plugin">
+    <ContentPage.BindingContext>
+        <vm:GaleriaViewModel x:Name="vmga"></vm:GaleriaViewModel>
+    </ContentPage.BindingContext>
+    <ContentPage.Content>
+        <StackLayout>
+
+            <Rectangle HeightRequest="300" WidthRequest="200" BackgroundColor="#98CCDB"></Rectangle>
+
+            <StackLayout Grid.Row="1" HorizontalOptions="Center" >
+                <Grid HeightRequest="140" WidthRequest="200" HorizontalOptions="Center">
+
+                    <Image Source="carita" Margin="10,-160,10,0"></Image>
+                </Grid>
+            </StackLayout>
+            <StackLayout Margin="-35">
+                <Label FontSize="30" Text="¡Bienvenido!" Margin="0,20,0,0"  FontAttributes="Bold" TextColor="#1C375C" HorizontalOptions="CenterAndExpand"></Label>
+                <Label FontSize="20" Margin="0,15,0,45" Text="Comienza tu pedido" TextColor="Black"  HorizontalOptions="CenterAndExpand"></Label>
+                <Button Margin="205,0" BorderWidth="1" BorderColor="DarkGray" CornerRadius="50" HeightRequest="70" ImageSource="next.jpg" Grid.Row="5"  BackgroundColor="#1876F2"></Button>
+            </StackLayout>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

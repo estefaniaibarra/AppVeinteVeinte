@@ -1,0 +1,66 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="AppVeinteVeinte.Views.MenuView"
+             NavigationPage.HasNavigationBar="False">
+    <ContentPage.Content>
+        <ContentPage.BindingContext>
+            <vm:GaleriaViewModel x:Name="vmga"></vm:GaleriaViewModel>
+        </ContentPage.BindingContext>
+        <Grid>
+            <StackLayout  BackgroundColor="White" HeightRequest="20">
+                <StackLayout Orientation="Horizontal">
+                    <Frame>
+                        <Image Source="https://i.ibb.co/swzZ73h/flecha-izquierda.png" HeightRequest="30" Margin="5,0"/>
+                        <Frame.GestureRecognizers>
+                            <TapGestureRecognizer/>
+                            <!--Aqui va el comando para volver a la pagina de inicio-->
+                        </Frame.GestureRecognizers>
+                    </Frame>
+                    <Label Text=" Veinte Veinte"  HorizontalOptions="CenterAndExpand" FontAttributes="Bold" TextColor="Black" VerticalOptions="Center" FontSize="24" />
+                    <Frame HasShadow="False" CornerRadius="60" Padding="20">
+                        <Image Source="cuaderno" HeightRequest="30" Background="Transparent">
+                        </Image>
+                        <Frame.GestureRecognizers>
+                            <TapGestureRecognizer Command="{Binding CambiarVistaCommand}" CommandParameter="Agregar"/>
+                            <!--Aqui va el comando para ir a la pagina de el pedido-->
+                        </Frame.GestureRecognizers>
+                    </Frame>
+                </StackLayout>
+            </StackLayout>
+            <ScrollView Grid.Row="1" Margin="0,-320" BackgroundColor="White">
+                <FlexLayout VerticalOptions="Start" AlignContent="Start" Direction="Row" Wrap="Wrap" BindableLayout.ItemsSource="{Binding }">
+                    <FlexLayout.Resources>
+                        <Style TargetType="Label">
+                            <Setter Property="TextColor" Value="black"/>
+                            <Setter Property="FontFamily" Value="Arial"/>
+                        </Style>
+                    </FlexLayout.Resources>
+                    <BindableLayout.ItemTemplate>
+                        <DataTemplate>
+
+                            <Frame   Margin="5" Padding="0" BackgroundColor="Transparent" VerticalOptions="Center" HeightRequest="220" FlexLayout.Basis="50%">
+                                <Frame.GestureRecognizers>
+                                    <TapGestureRecognizer
+                                Command="{Binding Source={x:Reference vmga}, Path=DetallesCommand}" CommandParameter="{Binding .}">
+                                    </TapGestureRecognizer>
+                                </Frame.GestureRecognizers>
+                                <StackLayout Margin="5"  Padding="0,15">
+                                    <imgs:CircleImage WidthRequest="300" HeightRequest="150" Aspect="Fill" Margin="15,-10" Source="{Binding Imagen}"></imgs:CircleImage>
+                                    <Frame  Padding="10" CornerRadius="9" BackgroundColor="Transparent">
+                                        <FlexLayout JustifyContent="Center"  AlignItems="Center" >
+                                            <StackLayout >
+                                                <Label  TextTransform="Uppercase" FontAttributes="Bold" Text="{Binding Nombre}"></Label>
+                                                <Label Padding="0,1" Background="#98CCDB" HorizontalTextAlignment="Center" TextColor="white" Text="{Binding Precio, StringFormat='${0:F0}'}" ></Label>
+                                            </StackLayout>
+                                        </FlexLayout>
+                                    </Frame>
+                                </StackLayout>
+                            </Frame>
+                        </DataTemplate>
+                    </BindableLayout.ItemTemplate>
+                </FlexLayout>
+            </ScrollView>
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>
