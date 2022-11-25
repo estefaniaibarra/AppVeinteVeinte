@@ -3,10 +3,54 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:imgs="clr-namespace:System.Windows.Input.StylusPlugIns;assembly=PresentationCore"
         xmlns:local="clr-namespace:VeinteVeinteWPF"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        Title="MainWindow" Height="450" Width="800" MaxHeight="450" MaxWidth="800" MinHeight="450" MinWidth="800">
     <Grid>
-    
+        <Rectangle Width="auto" Height="100" Fill="#98CCDB" VerticalAlignment="Top"></Rectangle>
+        <Image Source="Assets/carita.png" Width="120" VerticalAlignment="Top"  Margin="10,40"></Image>
+        <Image Source="https://img.icons8.com/ios-filled/2x/menu-rounded.png" Width="35" Height="45" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="20,30"></Image>
+        <TextBlock Margin="70,34,0,0" FontWeight="SemiBold" TextAlignment="Left" FontSize="20">Mis pedidos</TextBlock>
+        <ScrollViewer Margin="0,170,0,0" VerticalScrollBarVisibility="Disabled">
+            <ListBox>
+                <ListBox.ItemTemplate>
+                    <DataTemplate>
+                        <StackPanel Background="#EFE3AF" Height="200" Width="250" >
+                            <Grid >
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width=".35*"/>
+                                    <ColumnDefinition Width=".30*"/>
+                                    <ColumnDefinition Width=".15*"/>
+                                    <ColumnDefinition Width=".20*"/>
+                                </Grid.ColumnDefinitions>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition/>
+                                    <RowDefinition/>
+                                </Grid.RowDefinitions>
+                                <Grid.Resources>
+                                    <Style TargetType="TextBlock">
+                                        <Setter Property="VerticalAlignment" Value="Center"/>
+                                        <Setter Property="HorizontalAlignment" Value="Center"/>
+                                        <Setter Property="FontSize" Value="18"/>
+                                        <Setter Property="TextWrapping" Value="Wrap"/>
+                                    </Style>
+                                </Grid.Resources>
+                                <Ellipse Fill="White" Width="20" Height="20"></Ellipse>
+                                <Ellipse Fill="White" Width="20" Height="20" Grid.Column="3"></Ellipse>
+                                <Ellipse Fill="White" Width="20" Grid.Column="2" Height="20"></Ellipse>
+                                <TextBlock Padding="0,10" Grid.Row="0" Text="5" Grid.Column="1" ></TextBlock>
+
+                                <TextBlock Grid.Row="1" Grid.Column="0" Foreground="#1876F2" Text="Donas" FontWeight="Bold" ></TextBlock>
+                                <TextBlock Grid.Row="1" Grid.Column="1" Text=".................." ></TextBlock>
+                                <TextBlock Grid.Row="1" Foreground="Black" Grid.Column="2" Text="2"></TextBlock>
+                                <TextBlock Grid.Row="1" Grid.Column="3" Text="$70"></TextBlock>
+                            </Grid>
+                        </StackPanel>
+                    </DataTemplate>
+                </ListBox.ItemTemplate>
+            </ListBox>
+
+        </ScrollViewer>
     </Grid>
 </Window>
